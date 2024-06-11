@@ -1,0 +1,13 @@
+{
+    "name": "josias.silva/ajax",
+    "autoload": {
+        "psr-4": {
+            "app\\": "app"
+        }
+    },
+    "authors": [{
+        "name": "Josias Silva",
+        "email": "josilva1233@gmail.com"
+    }],
+    "require": {}
+}
