@@ -7,6 +7,9 @@
 </head>
 <body>
     <button id="btn-users">users</button>
+
+    <div id="div-users"></div>
+
    <script src="assests/js/user.js"></script>
 </body>
 </html>

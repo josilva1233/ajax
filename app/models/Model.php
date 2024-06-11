@@ -17,7 +17,7 @@ abstract class Model{
     {
 
     $sql = "SELECT * FROM {$this->table}";
-    $all = $this->connetion->prepare($sql);
+    $all = $this->connection->prepare($sql);
     $all->execute();
     return $all->fetchAll();
 
