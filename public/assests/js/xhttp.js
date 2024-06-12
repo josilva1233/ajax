@@ -14,7 +14,7 @@ function xmlHttpPost(url,callback,parameters=''){
 
     xhttp.onreadystatechange = callback;
 
-    xhttp.open('POST', url+'.php'+parameters, true);
+    xhttp.open('POST', url+'.php' + parameters, true);
 
     xhttp.send();
 

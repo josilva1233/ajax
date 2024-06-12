@@ -3,18 +3,18 @@ window.onload = function() {
     var btn_users = document.querySelector("#btn-users");
     var div_users = document.querySelector("#div-users");
 
-    var xhttp = new XMLHttpRequest();
+    btn_users.onclick = function() {
+         
+        xmlHttpGet('ajax/user', function(){
 
-    xhttp.onreadystatechange = function() {
+            beforeSend(function(){
+                div_users.innerHTML = `<i class="fa fa-refresh fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>`;
+            });
 
-        if(this.readyState < 4){
-            div_users.innerHTML = `<i class="fa fa-refresh fa-spin fa-3x fa-fw"></i><span class="sr-only>Loading...</span>"`;
 
-        }
+            success(function(){
 
-        if (this.readyState == 4 && this.status == 200) {
-
-            var users = JSON.parse(this.responseText);
+            var users = JSON.parse(xhttp.responseText);
 
             var table = `<table class='table table-striped'`;
 
@@ -34,16 +34,16 @@ window.onload = function() {
             table += `</table>`;
 
             div_users.innerHTML = table;
+                
+            });
+
+            error(function(){
+                div_users.innerHTML = 'Ocorreu um erro';
+            })
+        });
 
 
-        }
 
-    }
-
-    btn_users.onclick = function() {
-
-        xhttp.open('GET', 'ajax/user.php', true);
-        xhttp.send();
 
     }
 
