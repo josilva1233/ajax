@@ -19,4 +19,4 @@ class Connection {
     }
 }
 #teste de conexão com o banco de dados
-//$connection = Connection::connect();/
+//$connection = Connection::connect();
