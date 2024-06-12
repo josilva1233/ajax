@@ -5,6 +5,7 @@ namespace app\models;
 abstract class Model{
 
     private $connection;
+    protected $table;
 
     public function __construct()
     {
