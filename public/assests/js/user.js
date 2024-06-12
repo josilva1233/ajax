@@ -7,6 +7,11 @@ window.onload = function() {
 
     xhttp.onreadystatechange = function() {
 
+        if(this.readyState < 4){
+            div_users.innerHTML = `<i class="fa fa-refresh fa-spin fa-3x fa-fw"></i><span class="sr-only>Loading...</span>"`;
+
+        }
+
         if (this.readyState == 4 && this.status == 200) {
 
             var users = JSON.parse(this.responseText);
