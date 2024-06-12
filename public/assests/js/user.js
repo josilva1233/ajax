@@ -2,6 +2,23 @@ window.onload = function() {
 
     var btn_users = document.querySelector("#btn-users");
     var div_users = document.querySelector("#div-users");
+    var div_create = document.querySelector("#div-create");
+    var form_cadastrar = document.querySelector("#form_cadastrar");
+
+    form_cadastrar.onsubmit = function(event){
+        event.preventDefault();
+        xmlHttpPost('ajax/create', function(){
+            beforeSend(function(){
+
+                div_create.innerHTML = `<i class="fa fa-refresh fa-spin fa-3x fa-fw"></i><span class="sr-only">Aguarde...</span>`;
+
+            })
+
+            success(function(){
+                
+            })
+        })
+    }
 
     btn_users.onclick = function() {
          
