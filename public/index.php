@@ -32,7 +32,7 @@
                 <div id="menu1" class="tab-pane fade in">
                     <br>
                     <div id="div-create"></div>
-                    
+
                     <form action="" method="post" role="form" id="form_cadastrar" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="">Nome</label>
@@ -50,10 +50,10 @@
                 <div id="menu2" class="tab-pane fade in">
                     <br>
                     <form action="" id="form-buscar">
-                        <input type="text" name="user">
-                        <button type="submit" id="btn-buscar">Buscar</button>
+                        <input type="text" name="name">
+                        <button type="submit">Buscar</button>
                         <hr>
-                        <div id="div-users"></div>
+                        <div id="div-user"></div>
                     </form>
                 </div>
             </div>
