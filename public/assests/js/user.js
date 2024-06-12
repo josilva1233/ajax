@@ -14,6 +14,8 @@ window.onload = function() {
 
             success(function(){
 
+            console.log(JSON.parse(xhttp.responseText));
+
             var users = JSON.parse(xhttp.responseText);
 
             var table = `<table class='table table-striped'`;
@@ -40,7 +42,7 @@ window.onload = function() {
             error(function(){
                 div_users.innerHTML = 'Ocorreu um erro';
             })
-        });
+        },'?id=1');
 
 
 

@@ -14,13 +14,14 @@ abstract class Model{
 
     }
 
-    public function all()
+    public function find($field,$value)
     {
 
-    $sql = "SELECT * FROM {$this->table}";
-    $all = $this->connection->prepare($sql);
-    $all->execute();
-    return $all->fetchAll();
+    $sql = "SELECT * FROM {$this->table} WHERE {$field} = ?";
+    $find = $this->connection->prepare($sql);
+    $find->bindValue(1, $value);
+    $find->execute();
+    return $find->fetch();
 
     }
 
