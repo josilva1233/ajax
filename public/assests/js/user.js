@@ -1,11 +1,20 @@
 window.onload = function () {
 
+    //manupula user
     var btn_users = document.querySelector("#btn-users");
     var div_users = document.querySelector("#div-users");
-    var div_create = document.querySelector("#div-create");
-    var div_buscar = document.querySelector("#div-user");
-    var form_cadastrar = document.querySelector("#form_cadastrar");
+    var div_create_user = document.querySelector("#div-create-user");
+    var form_cadastrar_user = document.querySelector("#form_cadastrar_user");
+   
+    //manupula profile
+    var btn_profiles = document.querySelector("#btn-profiles");
+    var div_profiles = document.querySelector("#div-profiles");
+    var div_create_profile = document.querySelector("#div-create-profile");
+    var form_cadastrar_profile = document.querySelector("#form_cadastrar_profile");
+
+    //buscar usuário
     var form_buscar = document.querySelector("#form-buscar");
+    var div_buscar = document.querySelector("#div-user");
 
     function listarUser(users){
 
@@ -30,6 +39,29 @@ window.onload = function () {
 
     }
 
+    function listarProfile(profiles){
+
+        var table = `<table class='table table-striped'`;
+
+        table += `<thead><tr><td>ID</td><td>Nome</td></tr></thead>`;
+
+        table += `<tbody>`;
+
+        profiles.forEach(function (profile) {
+            table += `<tr>`;
+            table += `<td>${profile.id}</td>`;
+            table += `<td>${profile.name}</td>`;
+            table += `</tr>`;
+        });
+
+        table += `</tbody>`;
+        table += `</table>`;
+
+        return table;
+
+    } 
+
+
     form_buscar.addEventListener('submit', function (event) {
         event.preventDefault();
 
@@ -50,30 +82,39 @@ window.onload = function () {
 
                     div_buscar.innerHTML = 'Nenhum usuário foi encontrado';
 
-                } else {
+                } else if (xhttp.responseText == 'noprofile') {
+
+                    div_buscar.innerHTML = 'Nenhum Perfil foi encontrado';
+
+                }else {
 
                     var users = JSON.parse(xhttp.responseText);
 
                     div_buscar.innerHTML = listarUser(users);
 
+                    var profiles = JSON.parse(xhttp.responseText);
+
+                    div_buscar.innerHTML = listarProfile(profiles);
+
                 }
+
             });
 
         }, form);
 
     })
 
-    form_cadastrar.onsubmit = function (event) {
+    form_cadastrar_user.onsubmit = function (event) {
 
         event.preventDefault();
 
-        var form = new FormData(form_cadastrar);
+        var form = new FormData(form_cadastrar_user);
 
 
-        xmlHttpPost('ajax/create', function () {
+        xmlHttpPost('ajax/createUser', function () {
             beforeSend(function () {
 
-                div_create.innerHTML = `<i class="fa fa-refresh fa-spin fa-3x fa-fw"></i><span class="sr-only">Aguarde...</span>`;
+                div_create_user.innerHTML = `<i class="fa fa-refresh fa-spin fa-3x fa-fw"></i><span class="sr-only">Aguarde...</span>`;
 
             });
 
@@ -81,11 +122,43 @@ window.onload = function () {
 
                 var response = xhttp.responseText;
                 if (response == 'cadastrado') {
-                    div_create.innerHTML = 'Cadastrado com sucesso !!';
+                    div_create_user.innerHTML = 'Cadastrado com sucesso !!';
                 }
 
                 if (response == 'erro') {
-                    div_create.innerHTML = 'Ocorreu um erro'
+                    div_create_user.innerHTML = 'Ocorreu um erro'
+                }
+
+                console.log(xhttp.responseText);
+
+            });
+
+        }, form);
+    }
+
+    form_cadastrar_profile.onsubmit = function (event) {
+
+        event.preventDefault();
+
+        var form = new FormData(form_cadastrar_profile);
+
+
+        xmlHttpPost('ajax/createProfile', function () {
+            beforeSend(function () {
+
+                div_create_profile.innerHTML = `<i class="fa fa-refresh fa-spin fa-3x fa-fw"></i><span class="sr-only">Aguarde...</span>`;
+
+            });
+
+            success(function () {
+
+                var response = xhttp.responseText;
+                if (response == 'cadastrado') {
+                    div_create_profile.innerHTML = 'Cadastrado com sucesso !!';
+                }
+
+                if (response == 'erro') {
+                    div_create_profile.innerHTML = 'Ocorreu um erro'
                 }
 
                 console.log(xhttp.responseText);
@@ -119,9 +192,31 @@ window.onload = function () {
             })
         });
 
+    }
+
+    btn_profiles.onclick = function () {
+
+        xmlHttpGet('ajax/profile', function () {
+
+            beforeSend(function () {
+                div_profiles.innerHTML = `<i class="fa fa-refresh fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>`;
+            });
 
 
+            success(function () {
 
+                console.log(JSON.parse(xhttp.responseText));
+
+                var profiles = JSON.parse(xhttp.responseText);
+
+                div_profiles.innerHTML = listarProfile(profiles);
+
+            });
+
+            error(function () {
+                div_profiles.innerHTML = 'Ocorreu um erro';
+            })
+        });
     }
 
 }

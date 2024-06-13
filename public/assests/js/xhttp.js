@@ -20,8 +20,6 @@ function xmlHttpPost(url, callback, parameters = '') {
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     };
 
-
-
     xhttp.send(parameters);
 
 }
@@ -48,5 +46,6 @@ function success(callback) {
 function error(callback) {
 
     xhttp.onerror = callback;
+    
 }
 

@@ -15,13 +15,16 @@
     <div class="container">
         <div class="row">
             <br>
+            <!--Nav principal-->
             <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#home">Users</a></li>
+                <li class="active"><a data-toggle="tab" href="#home">Users</a></li>,
+                <li><a data-toggle="tab" href="#menu0">Profiles</a></li>
                 <li><a data-toggle="tab" href="#menu1">Cadastrar</a></li>
                 <li><a data-toggle="tab" href="#menu2">Busca</a></li>
             </ul>
 
             <div class="tab-content">
+
                 <div id="home" class="tab-pane fade in active">
                     <br>
                     <button id="btn-users" class="btn btn-primary btn-xs">Listar users</button>
@@ -29,22 +32,55 @@
                     <div id="div-users"></div>
                 </div>
 
-                <div id="menu1" class="tab-pane fade in">
+                <div id="menu0" class="tab-pane fade in">
                     <br>
-                    <div id="div-create"></div>
+                    <button id="btn-profiles" class="btn btn-primary btn-xs">Listar Profiles</button>
+                    <hr>
+                    <div id="div-profiles"></div>
+                </div>
 
-                    <form action="" method="post" role="form" id="form_cadastrar" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label for="">Nome</label>
-                            <input type="text" class="form-control" name="name" placeholder="Nome">
+                <div id="menu1" class="tab-pane fade">
+                    <br>
+                    <!--Nav secundária cadastro-->
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#cadastroUser">Users</a></li>
+                        <li><a data-toggle="tab" href="#cadastroProfile">Profiles</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div id="cadastroUser" class="tab-pane fade in active">
+                            <div id="div-create-user"></div>
+                            <!--Form cadastro users-->
+                            <form action="" method="post" role="form" id="form_cadastrar_user" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label for="name">Nome</label>
+                                    <input type="text" class="form-control" name="name" id="name" placeholder="Nome">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                                </div>
+                                <button type="submit" class="btn btn-primary" id="btn-cadastrar-user">Cadastrar</button>
+                            </form>
                         </div>
 
-                        <div class="form-group">
-                            <label for="">Email</label>
-                            <input type="text" class="form-control" name="email" placeholder="Email">
+                        <div id="cadastroProfile" class="tab-pane fade">
+
+                            <div id="div-create-profile"></div>
+                            <!--Form cadastro profile-->
+                            <form action="" method="post" role="form" id="form_cadastrar_profile" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label for="name">Nome</label>
+                                    <input type="text" class="form-control" name="name" id="name" placeholder="Nome">
+                                </div>
+                                <button type="submit" class="btn btn-primary" id="btn-cadastrar-profile">Cadastrar</button>
+                            </form>
                         </div>
-                        <button type="submit" class="btn btn-primary" id="btn-cadastrar">Cadastrar</button>
-                    </form>
+                    </div>
                 </div>
 
                 <div id="menu2" class="tab-pane fade in">
@@ -56,16 +92,17 @@
                         <div id="div-user"></div>
                     </form>
                 </div>
+
             </div>
             <hr>
         </div>
     </div>
 
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="assests/js/xhttp.js"></script>
     <script src="assests/js/user.js"></script>
+
 </body>
 
 </html>
