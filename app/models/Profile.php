@@ -6,26 +6,26 @@ class Profile extends Model
 {
     protected $table = 'profile';
 
-    public function buscar($name)
+    public function buscar($nameProfile)
     {
-        $sql = "SELECT * FROM {$this->table} WHERE name like ? order by id desc";
+        $sql = "SELECT * FROM {$this->table} WHERE nameProfile like ? order by id desc";
 
         $buscar = $this->connection->prepare($sql);
 
-        $buscar->bindValue(1, '%' . $name . '%');
+        $buscar->bindValue(1, '%' . $nameProfile . '%');
 
         $buscar->execute();
 
         return $buscar->fetchAll();
     }
 
-    public function create($name)
+    public function create($nameProfile)
     {
 
-        $sql = "INSERT INTO {$this->table}(name) values(:name)";
+        $sql = "INSERT INTO {$this->table}(nameProfile) values(:nameProfile)";
 
         $create = $this->connection->prepare($sql);
-        $create->bindValue(':name', $name);
+        $create->bindValue(':nameProfile', $nameProfile);
         $create->execute();
 
         return $this->connection->lastInsertId();

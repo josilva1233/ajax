@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" id="criteria">
         <div class="row">
             <br>
             <!--Nav principal-->
@@ -45,6 +45,7 @@
                     <ul class="nav nav-tabs">
                         <li class="active"><a data-toggle="tab" href="#cadastroUser">Users</a></li>
                         <li><a data-toggle="tab" href="#cadastroProfile">Profiles</a></li>
+                        <li><a data-toggle="tab" href="#associarProfileUser">Associar</a></li>
                     </ul>
 
                     <div class="tab-content">
@@ -74,12 +75,26 @@
                             <!--Form cadastro profile-->
                             <form action="" method="post" role="form" id="form_cadastrar_profile" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <label for="name">Nome</label>
-                                    <input type="text" class="form-control" name="name" id="name" placeholder="Nome">
+                                    <label for="nameProfile">Nome</label>
+                                    <input type="text" class="form-control" name="nameProfile" id="nameProfile" placeholder="Nome">
                                 </div>
                                 <button type="submit" class="btn btn-primary" id="btn-cadastrar-profile">Cadastrar</button>
                             </form>
                         </div>
+
+                        <div id="associarProfileUser" class="tab-pane fade">
+
+                            <div id="div-create-profile"></div>
+                            <!--Form cadastro profile-->
+                            <form action="" method="post" role="form" id="form_cadastrar_profile" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label for="nameProfile">Nome</label>
+                                    <input type="text" class="form-control" name="nameProfile" id="nameProfile" placeholder="Nome">
+                                </div>
+                                <button type="submit" class="btn btn-primary" id="btn-cadastrar-profile">Associar</button>
+                            </form>
+                        </div>
+
                     </div>
                 </div>
 

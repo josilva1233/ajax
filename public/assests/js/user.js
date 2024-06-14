@@ -16,6 +16,18 @@ window.onload = function () {
     var form_buscar = document.querySelector("#form-buscar");
     var div_buscar = document.querySelector("#div-user");
 
+    //exiber pagina dependendo do peril do usuário
+    //var criteria = document.querySelector("#criteria");
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+        var targetDiv = document.getElementById("#criteria");
+        targetDiv.style.display = "none";
+    });
+    
+
+
+
     function listarUser(users){
 
         var table = `<table class='table table-striped'`;
@@ -50,7 +62,7 @@ window.onload = function () {
         profiles.forEach(function (profile) {
             table += `<tr>`;
             table += `<td>${profile.id}</td>`;
-            table += `<td>${profile.name}</td>`;
+            table += `<td>${profile.nameProfile}</td>`;
             table += `</tr>`;
         });
 
@@ -76,29 +88,23 @@ window.onload = function () {
             });
 
             success(function () {
-
-
-                if (xhttp.responseText == 'nouser') {
-
+                var response = xhttp.responseText;
+            
+                if (response === 'nouser') {
                     div_buscar.innerHTML = 'Nenhum usuário foi encontrado';
-
-                } else if (xhttp.responseText == 'noprofile') {
-
+                } else if (response === 'noprofile') {
                     div_buscar.innerHTML = 'Nenhum Perfil foi encontrado';
-
-                }else {
-
-                    var users = JSON.parse(xhttp.responseText);
-
-                    div_buscar.innerHTML = listarUser(users);
-
-                    var profiles = JSON.parse(xhttp.responseText);
-
-                    div_buscar.innerHTML = listarProfile(profiles);
-
+                } else {
+                    var data = JSON.parse(response);
+                    console.log(xhttp.responseText)
+                    if (Array.isArray(data)) {
+                        div_buscar.innerHTML = listarUser(data);
+                    }else if (Array.isArray(data)) {
+                        div_buscar.innerHTML = listarProfile(data);
+                    }
                 }
-
             });
+            
 
         }, form);
 
@@ -218,5 +224,8 @@ window.onload = function () {
             })
         });
     }
+
+
+    
 
 }
