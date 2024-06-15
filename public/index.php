@@ -1,3 +1,4 @@
+<?header("Access-Control-Allow-Origin: *");?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,15 +56,15 @@
                             <form action="" method="post" role="form" id="form_cadastrar_user" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="name">Nome</label>
-                                    <input type="text" class="form-control" name="name" id="name" placeholder="Nome">
+                                    <input type="text" class="form-control" name="name" placeholder="Nome">
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email</label>
-                                    <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                                    <input type="email" class="form-control" name="email" placeholder="Email" autocomplete="current-email">
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Password</label>
-                                    <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                                    <input type="password" class="form-control" name="password"  placeholder="Password" autocomplete="current-password">
                                 </div>
                                 <button type="submit" class="btn btn-primary" id="btn-cadastrar-user">Cadastrar</button>
                             </form>
@@ -76,7 +77,7 @@
                             <form action="" method="post" role="form" id="form_cadastrar_profile" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="nameProfile">Nome</label>
-                                    <input type="text" class="form-control" name="nameProfile" id="nameProfile" placeholder="Nome">
+                                    <input type="text" class="form-control" name="name" placeholder="Nome">
                                 </div>
                                 <button type="submit" class="btn btn-primary" id="btn-cadastrar-profile">Cadastrar</button>
                             </form>
@@ -84,15 +85,8 @@
 
                         <div id="associarProfileUser" class="tab-pane fade">
 
-                            <div id="div-create-profile"></div>
-                            <!--Form cadastro profile-->
-                            <form action="" method="post" role="form" id="form_cadastrar_profile" enctype="multipart/form-data">
-                                <div class="form-group">
-                                    <label for="nameProfile">Nome</label>
-                                    <input type="text" class="form-control" name="nameProfile" id="nameProfile" placeholder="Nome">
-                                </div>
-                                <button type="submit" class="btn btn-primary" id="btn-cadastrar-profile">Associar</button>
-                            </form>
+                            <div id="div-associate"></div>
+
                         </div>
 
                     </div>
@@ -101,11 +95,13 @@
                 <div id="menu2" class="tab-pane fade in">
                     <br>
                     <form action="" id="form-buscar">
+                        <label for="nameProfile">Pesquise o user ou perfil</label>
                         <input type="text" name="name">
                         <button type="submit">Buscar</button>
                         <hr>
                         <div id="div-user"></div>
                     </form>
+                    <br>
                 </div>
 
             </div>

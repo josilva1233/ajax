@@ -5,7 +5,7 @@ window.onload = function () {
     var div_users = document.querySelector("#div-users");
     var div_create_user = document.querySelector("#div-create-user");
     var form_cadastrar_user = document.querySelector("#form_cadastrar_user");
-   
+
     //manupula profile
     var btn_profiles = document.querySelector("#btn-profiles");
     var div_profiles = document.querySelector("#div-profiles");
@@ -16,19 +16,17 @@ window.onload = function () {
     var form_buscar = document.querySelector("#form-buscar");
     var div_buscar = document.querySelector("#div-user");
 
-    //exiber pagina dependendo do peril do usuário
-    //var criteria = document.querySelector("#criteria");
+    
+    var div_associate = document.querySelector("#div-associate")
+    const url = 'https://chatgpt.com/c/1edcddac-cfdc-4bfe-8038-ece44c610f37';
+    div_associate.innerHTML += `<a href="${url}" target="_blank">Link para clicar</a>`;
 
-
-    document.addEventListener("DOMContentLoaded", function() {
-        var targetDiv = document.getElementById("#criteria");
-        targetDiv.style.display = "none";
-    });
+    div_associate.style.color = "pink";
     
 
 
 
-    function listarUser(users){
+    function listarUser(users) {
 
         var table = `<table class='table table-striped'`;
 
@@ -51,7 +49,7 @@ window.onload = function () {
 
     }
 
-    function listarProfile(profiles){
+    function listarProfile(profiles) {
 
         var table = `<table class='table table-striped'`;
 
@@ -62,7 +60,7 @@ window.onload = function () {
         profiles.forEach(function (profile) {
             table += `<tr>`;
             table += `<td>${profile.id}</td>`;
-            table += `<td>${profile.nameProfile}</td>`;
+            table += `<td>${profile.name}</td>`;
             table += `</tr>`;
         });
 
@@ -71,7 +69,7 @@ window.onload = function () {
 
         return table;
 
-    } 
+    }
 
 
     form_buscar.addEventListener('submit', function (event) {
@@ -89,22 +87,25 @@ window.onload = function () {
 
             success(function () {
                 var response = xhttp.responseText;
-            
-                if (response === 'nouser') {
-                    div_buscar.innerHTML = 'Nenhum usuário foi encontrado';
-                } else if (response === 'noprofile') {
-                    div_buscar.innerHTML = 'Nenhum Perfil foi encontrado';
-                } else {
-                    var data = JSON.parse(response);
-                    console.log(xhttp.responseText)
-                    if (Array.isArray(data)) {
-                        div_buscar.innerHTML = listarUser(data);
-                    }else if (Array.isArray(data)) {
-                        div_buscar.innerHTML = listarProfile(data);
+
+                if (response === 'notfound') {
+                    div_buscar.innerHTML = 'Não encontrou perfil e nem usuário';
+                } else if (div_buscar.innerHTML) {
+
+                    console.log(JSON.parse(xhttp.responseText));
+                    var busca = JSON.parse(xhttp.responseText);
+
+                    let emailFound = busca.some(obj => 'email' in obj);
+
+                    if(emailFound){
+                        div_buscar.innerHTML = listarUser(busca);
+                    }else{
+                        div_buscar.innerHTML = listarProfile(busca);
                     }
+                    
                 }
             });
-            
+
 
         }, form);
 
@@ -224,8 +225,5 @@ window.onload = function () {
             })
         });
     }
-
-
-    
 
 }

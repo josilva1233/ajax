@@ -8,7 +8,7 @@ class Profile extends Model
 
     public function buscar($nameProfile)
     {
-        $sql = "SELECT * FROM {$this->table} WHERE nameProfile like ? order by id desc";
+        $sql = "SELECT * FROM {$this->table} WHERE name like ? order by id desc";
 
         $buscar = $this->connection->prepare($sql);
 
@@ -22,10 +22,10 @@ class Profile extends Model
     public function create($nameProfile)
     {
 
-        $sql = "INSERT INTO {$this->table}(nameProfile) values(:nameProfile)";
+        $sql = "INSERT INTO {$this->table}(name) values(:name)";
 
         $create = $this->connection->prepare($sql);
-        $create->bindValue(':nameProfile', $nameProfile);
+        $create->bindValue(':name', $nameProfile);
         $create->execute();
 
         return $this->connection->lastInsertId();

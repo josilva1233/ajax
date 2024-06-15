@@ -5,7 +5,7 @@ require "../../config.php";
 
 use app\models\Profile;
 
-$nameProfile = filter_input(INPUT_POST, 'nameProfile', FILTER_SANITIZE_STRING);
+$nameProfile = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
 #atrasar a chamada em 5 segundos
 sleep(5);
 
