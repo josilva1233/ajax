@@ -32,14 +32,12 @@
                 <div id="home" class="tab-pane fade in active">
                     <br>
                     <button id="btn-users" class="btn btn-primary" >Listar users</button>
-                    <hr>
                     <div id="div-users"></div>
                 </div>
 
                 <div id="menu0" class="tab-pane fade in">
                     <br>
                     <button id="btn-profiles" class="btn btn-primary">Listar Profiles</button>
-                    <hr>
                     <div id="div-profiles"></div>
                 </div>
 
@@ -110,7 +108,7 @@
                 </div>
 
             </div>
-            <hr>
+            
         </div>
     </div>
 
