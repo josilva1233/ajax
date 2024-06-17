@@ -77,7 +77,7 @@
                             <!--Form cadastro profile-->
                             <form action="" method="post" role="form" id="form_cadastrar_profile" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <label for="nameProfile">Nome</label>
+                                    <label for="name">Nome</label>
                                     <input type="text" class="form-control" name="name" placeholder="Nome">
                                 </div>
                                 <button type="submit" class="btn btn-primary" id="btn-cadastrar-profile">Cadastrar</button>
@@ -97,7 +97,7 @@
                     <br>
                     <form action="" role="form" id="form-buscar" enctype="multipart/form-data">
                         <div class="form-group">
-                            <label for="nameProfile">Pesquise o user ou perfil</label>
+                            <label for="name">Pesquise o user ou perfil</label>
                             <input type="text" class="form-control" name="name">
                         </div>
                         <button type="submit" class="btn btn-primary">Buscar</button>
@@ -111,11 +111,11 @@
             
         </div>
     </div>
-
+    <script src="assests/js/script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="assests/js/xhttp.js"></script>
-    <script src="assests/js/user.js"></script>
+
 
 </body>
 

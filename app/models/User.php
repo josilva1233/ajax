@@ -5,6 +5,7 @@ namespace app\models;
 class User extends Model
 {
     protected $table = 'users';
+    protected $id;
 
     public function buscar($name)
     {
@@ -32,4 +33,19 @@ class User extends Model
 
         return $this->connection->lastInsertId();
     }
+    
+    public function delete($id)
+    {
+        $sql = "DELETE FROM {$this->table} WHERE id = :id";
+    
+        $delete = $this->connection->prepare($sql);
+        $delete->bindValue(':id', $id);
+        $delete->execute();
+    
+        // Verifica se houve alguma linha afetada pelo DELETE
+        $rowCount = $delete->rowCount();
+    
+        return $rowCount; // Retorna o número de linhas deletadas
+    }
+    
 }
