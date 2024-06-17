@@ -30,7 +30,7 @@ window.onload = function () {
 
         var table = `<table class='table table-striped'`;
 
-        table += `<thead><tr><td>ID</td><td>Nome</td><td>Email</td></tr></thead>`;
+        table += `<thead><tr id='head'><td>ID</td><td>Nome</td><td>Email</td></tr></thead>`;
 
         table += `<tbody>`;
 
