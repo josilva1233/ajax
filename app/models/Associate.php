@@ -2,9 +2,9 @@
 
 namespace app\models;
 
-class User extends Model
+class Associate extends Model
 {
-    protected $table = 'users';
+    protected $table = 'associate';
     protected $id;
 
     public function buscar($name)
@@ -20,15 +20,14 @@ class User extends Model
         return $buscar->fetchAll();
     }
 
-    public function create($name, $email,  $password)
+    public function create($user_id, $profile_id)
     {
 
-        $sql = "INSERT INTO {$this->table}(name,email,password) values(:name, :email, :password)";
+        $sql = "INSERT INTO {$this->table}(user_id, profile_id) values(:user_id, :profile_id)";
 
         $create = $this->connection->prepare($sql);
-        $create->bindValue(':name', $name);
-        $create->bindValue(':email', $email);
-        $create->bindValue(':password', $password);
+        $create->bindValue(':user_id', $user_id);
+        $create->bindValue(':profile_id', $profile_id);
         $create->execute();
 
         return $this->connection->lastInsertId();

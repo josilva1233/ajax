@@ -1,0 +1,169 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin-top: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+}
+
+.nav-tabs {
+    margin-bottom: 20px;
+    overflow-x: auto;
+}
+
+.nav-tabs > li {
+    float: none;
+    display: inline-block;
+}
+
+.nav-tabs > li > a {
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    color: #555;
+    display: block;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li > a:hover {
+    background-color: #ffffff;
+    border-color: #ddd #ddd #fff;
+    color: #000;
+}
+
+.tab-content > .tab-pane {
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin: 20px 0;
+}
+
+/* Form Styles */
+form {
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-control {
+    width: 100%;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+/* Custom Styles for Specific Sections */
+#div-users, #div-profiles, #div-create-user, #div-create-profile, #div_associate_cadastro {
+    padding: 15px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 20px;
+    box-sizing: border-box;
+}
+
+#div-user {
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 20px;
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 2.5em; /* Tamanho padrão */
+    text-align: center;
+    margin: 20px;
+}
+
+/* Estilos para telas menores (celulares) */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    h1 {
+        font-size: 1.8em; /* Ajuste o tamanho da fonte para telas menores */
+        margin: 15px;
+    }
+
+    form button[type="submit"] {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .tab-content > .tab-pane {
+        padding: 15px;
+    }
+}
+
+/* Estilos para telas ainda menores (celulares pequenos) */
+@media (max-width: 480px) {
+    .container {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    
+    h1 {
+        font-size: 1.5em; /* Ajuste o tamanho da fonte para telas menores */
+        margin: 10px;
+    }
+
+    form button[type="submit"] {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .tab-content > .tab-pane {
+        padding: 15px;
+    }
+}
+
+.nav-tabs {
+    margin-bottom: 0px;
+    overflow-x: auto;
+}
+
+.nav-tabs {
+     border-bottom: 0px solid #ddd; 
+}
+
