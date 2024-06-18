@@ -31,7 +31,7 @@
 
                 <div id="home" class="tab-pane fade in active">
                     <br>
-                    <button id="btn-users" class="btn btn-primary" >Listar users</button>
+                    <button id="btn-users" class="btn btn-primary">Listar users</button>
                     <div id="div-users"></div>
                 </div>
 
@@ -85,9 +85,22 @@
                         </div>
 
                         <div id="associarProfileUser" class="tab-pane fade">
+                            <div id="div_associate_cadastro"></div>
 
-                            <div id="div-associate"></div>
-
+                            <!-- Formulário de cadastro de perfil -->
+                            <form action="" method="post" role="form" id="form_associate" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label for="name">Nome</label>
+                                    <select id="div-associate-user" class="form-control" name="user_id">
+                                        <option value="name">Nome</option>
+                                    </select>
+                                    <label for="Profile">Profile</label>
+                                    <select id="div-associate-profile" class="form-control" name="profile_id">
+                                        <option value="Profile">Profile</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary" id="btn-cadastrar-profile">Cadastrar</button>
+                            </form>
                         </div>
 
                     </div>
@@ -108,7 +121,7 @@
                 </div>
 
             </div>
-            
+
         </div>
     </div>
     <script src="assests/js/script.js"></script>

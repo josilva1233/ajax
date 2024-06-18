@@ -18,35 +18,92 @@ window.onload = function () {
     var div_buscar = document.querySelector("#div-user");
 
 
-    var div_associate = document.querySelector("#div-associate");
+    var div_associate = document.querySelector("#div-associate-user");
+    var div_associate_profile = document.querySelector("#div-associate-profile");
+    var form_associate = document.querySelector("#form_associate");
+    var div_associate_cadastro = document.querySelector("#div_associate_cadastro");
 
-    // Função para listar usuários
-    function listarAssociate(usuarios) {
-        let html = '<table class="table table-striped">';
+    function listarAssociateUser(usuarios) {
+        // Adiciona uma opção padrão, se necessário
 
-        html += '<thead><tr><th>ID</th><th>Name</th><th>Email</th></tr></thead>'; // Cabeçalho da tabela
-        html += `<tbody>`;
-        usuarios.forEach(usuarios => {
-            html += `<tr>`;
-            html += `<td>${usuarios.id}`;
-            html += `<td>${usuarios.name}</td>`;
-            html += `<td>${usuarios.email}</td>`;
-            html += `</tr>`;
+        // Adiciona uma opção padrão, se necessário
+        let html = '<option value="name">Selecione um usuário</option>';
+
+        // Itera sobre cada usuário e adiciona uma opção para cada um
+        usuarios.forEach(usuario => {
+            html += `<option value="${usuario.id}">${usuario.name}</option>`;
         });
-        html += `</tbody>`;
-        html += '</table>';
+
         return html;
+
     }
-    
+
     // Fazendo a requisição GET para o arquivo PHP
     fetch('ajax/user.php')
-       .then(response => response.json())
-       .then(data => {
+        .then(response => response.json())
+        .then(data => {
             var usuarios = data; // Os usuários recebidos do servidor
-            div_associate.innerHTML = listarAssociate(usuarios); // Atualiza a div com os usuários
+            div_associate.innerHTML = listarAssociateUser(usuarios); // Atualiza a div com os usuários
         })
-       .catch(error => console.error('Error:', error));
-    
+        .catch(error => console.error('Error:', error));
+
+    function listarAssociateProfile(profile) {
+        // Adiciona uma opção padrão, se necessário
+
+        // Adiciona uma opção padrão, se necessário
+        let html = '<option value="name">Selecione um usuário</option>';
+
+        // Itera sobre cada usuário e adiciona uma opção para cada um
+        profile.forEach(profile => {
+            html += `<option value="${profile.id}">${profile.name}</option>`;
+        });
+
+        return html;
+
+
+    }
+
+    // Fazendo a requisição GET para o arquivo PHP
+    fetch('ajax/profile.php')
+        .then(response => response.json())
+        .then(data => {
+            var profile = data; // Os usuários recebidos do servidor
+            div_associate_profile.innerHTML = listarAssociateProfile(profile); // Atualiza a div com os usuários
+        })
+        .catch(error => console.error('Error:', error));
+
+    form_associate.onsubmit = function (event) {
+
+        event.preventDefault();
+
+        var form = new FormData(form_associate);
+
+
+        xmlHttpPost('ajax/createAssociate', function () {
+            beforeSend(function () {
+
+                div_associate_cadastro.innerHTML = `<i class="fa fa-refresh fa-spin fa-3x fa-fw"></i><span class="sr-only">Aguarde...</span>`;
+
+            });
+
+            success(function () {
+
+                var response = xhttp.responseText;
+                if (response == 'associado') {
+                    div_associate_cadastro.innerHTML = 'Associado com sucesso !!';
+                }
+
+                if (response == 'erro') {
+                    div_associate_cadastro.innerHTML = 'Ocorreu um erro'
+                }
+
+                console.log(xhttp.responseText);
+
+            });
+
+        }, form);
+    }
+
 
     function listarUser(users) {
 
