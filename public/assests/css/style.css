@@ -90,7 +90,7 @@ form {
 
 
 /* Custom Styles for Specific Sections */
-#div-users, #div-profiles, #div-create-user, #div-create-profile, #div_associate_cadastro {
+#div-users, #div-profiles, #div-create-user, #div-create-profile, #div_associate_cadastro, #div-login-user {
     padding: 15px;
     background-color: #f1f1f1;
     border: 1px solid #ddd;
